@@ -22,6 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and()
 			.withUser("ved")
 			.password("ved")
+			.roles("ADMIN")
+			.and()
+			.withUser("notani")
+			.password("notani")
 			.roles("ADMIN");
 	}
 	
@@ -35,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers("/admin").hasRole("ADMIN")
 			.antMatchers("/user").hasRole("USER")
+			.antMatchers("/notani").hasRole("ADMIN")
 			.antMatchers("/").permitAll()
 			.and().formLogin();
 	}
